@@ -24,15 +24,15 @@ The project is developed with Maven under IntelliJ IDEA Community Edition.
 
 # Run the POC
 
-Execute under Linux this command `bash run-authorization-matrix-tests.sh`.
+Execute under linux this command `bash run-authorization-matrix-tests.sh`.
 
 # Build
 
-Execute the following command to build a runnable version of the web application `mv clean package`.
+Execute this command to build a runnable version of the web application `mv clean package`.
 
-The runnable jar will be create as file *target/poc-authz-testing-runnable.jar*.
+The runnable jar will be created as file *target/poc-authz-testing-runnable.jar*.
 
-Create a file named *jwt-secret.txt* containing a random string that will be used a secret for the signature of the JWT access token and store it in the same location than the runnable jar before to execute the jar.
+Create a file named *jwt-secret.txt* containing a random string that will be used as secret for the signature of the JWT access token and store it in the same location than the runnable jar before to execute the jar.
 
 ```
 $ cat jwt-secret.txt
