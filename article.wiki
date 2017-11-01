@@ -32,6 +32,7 @@ In order to achieve the full automation of the evaluation of the ''authorization
 ## The processing by a program in a easy way.
 ## To be read and updated by a human for the follow-up of the authorization combinations.
 ## Hierarchy in the information in order to easily materialize the differents combination.
+## The maximum possible of independence from the technology and design used to implements the application exposing the features.
 # Create a set of integration tests that will fully use the authorization matrix pivot file as input source in order to evaluate the differents combinations with:
 ## The minimum possible of maintenance when the authorization matrix pivot file is updated.
 ## A clear indication, in case of failed test, of the source authorization combination that do not respect the authorization matrix.
