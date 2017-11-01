@@ -2,7 +2,7 @@ language: java
 sudo: false
 jdk:
   - oraclejdk8
-script: run-authorization-matrix-tests.sh
+script: ./run-authorization-matrix-tests.sh
 notifications:
   email:
     recipients:
