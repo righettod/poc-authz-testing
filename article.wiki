@@ -382,12 +382,12 @@ This the implementation of the integration tests case class:
 
 In case of detection of authorization issue(s) the output is like this:
 <pre>
-testAccessUsingAnonymousUserPointOfView(org.owasp.pocauthztesting.AuthorizationMatrixIT)  Time elapsed: 1.009 s  <<< FAILURE!
+testAccessUsingAnonymousUserPointOfView(org.owasp.pocauthztesting.AuthorizationMatrixIT)  Time elapsed: 1.009 s  ### FAILURE
 java.lang.AssertionError:
 Access issues detected using the ANONYMOUS USER point of view:
   The service 'DeleteMessage' when called with POV 'ANONYMOUS' return a response code 200 that is not the expected one (403 expected).
 
-testAccessUsingBasicUserPointOfView(org.owasp.pocauthztesting.AuthorizationMatrixIT)  Time elapsed: 0.05 s  <<< FAILURE!
+testAccessUsingBasicUserPointOfView(org.owasp.pocauthztesting.AuthorizationMatrixIT)  Time elapsed: 0.05 s  ### FAILURE!
 java.lang.AssertionError:
 Access issues detected using the BASIC USER point of view:
   The service 'DeleteMessage' when called with POV 'BASIC' return a response code 200 that is not the expected one (403 expected).
