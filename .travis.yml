@@ -1,0 +1,10 @@
+language: java
+sudo: false
+jdk:
+  - oraclejdk8
+script: run-authorization-matrix-tests.sh
+notifications:
+  email:
+    recipients:
+      - dominique.righetto@gmail.com
+    on_failure: always

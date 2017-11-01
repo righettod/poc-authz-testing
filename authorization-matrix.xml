@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    This file materialize the authorization matrix for the different services exposed by the system.
+
+    It will be used by the tests as a input sources for the different tests cases:
+    1) Evaluate legitimate access and is correct implementation
+    2) Identify not legitimate access (authorization definition issue on service implementation)
+
+    The "name" attribute is used for identify uniquely a SERVICE or a ROLE.
+
+-->
+<authorization-matrix>
+
+    <!-- Describe the possible logical roles used in the system, is used here to provide a list+explanation of the different roles (authorization level) -->
+    <roles>
+        <role name="ANONYMOUS" description="Indicate that no authorization is needed"/>
+        <role name="BASIC" description="Role affected to a standard user (lowest access right just above anonymous)"/>
+        <role name="ADMIN" description="Role affected to a administrator user (highest access right)"/>
+    </roles>
+
+    <!-- List and describe the available services exposed by the system and the associated logical role(s) that can call them -->
+    <services>
+        <service name="ReadSingleMessage" uri="/{messageId}" http-method="GET" http-response-code-for-access-allowed="200" http-response-code-for-access-denied="403">
+            <role name="ANONYMOUS"/>
+            <role name="BASIC"/>
+            <role name="ADMIN"/>
+        </service>
+        <service name="ReadAllMessages" uri="/" http-method="GET" http-response-code-for-access-allowed="200" http-response-code-for-access-denied="403">
+            <role name="ANONYMOUS"/>
+            <role name="BASIC"/>
+            <role name="ADMIN"/>
+        </service>
+        <service name="CreateMessage" uri="/" http-method="PUT" http-response-code-for-access-allowed="200" http-response-code-for-access-denied="403">
+            <role name="BASIC"/>
+            <role name="ADMIN"/>
+        </service>
+        <service name="DeleteMessage" uri="/{messageId}" http-method="DELETE" http-response-code-for-access-allowed="200" http-response-code-for-access-denied="403">
+            <role name="ADMIN"/>
+        </service>
+    </services>
+
+    <!-- Provide a test payload for each service if needed -->
+    <services-testing>
+        <service name="ReadSingleMessage">
+            <payload/>
+        </service>
+        <service name="ReadAllMessages">
+            <payload/>
+        </service>
+        <service name="CreateMessage">
+            <payload content-type="application/json">
+                {"content":"test"}
+            </payload>
+        </service>
+        <service name="DeleteMessage">
+            <payload/>
+        </service>
+    </services-testing>
+
+</authorization-matrix>
