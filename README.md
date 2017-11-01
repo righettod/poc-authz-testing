@@ -6,6 +6,10 @@ The final goal is the creation of a cheat sheet for the **OWASP Cheat Sheet Seri
 
 https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series
 
+# Build status
+
+[![Build Status](https://travis-ci.org/righettod/poc-authz-testing.svg?branch=master)](https://travis-ci.org/righettod/poc-authz-testing)
+
 # Content
 
 The POC is composed of 2 parts:
