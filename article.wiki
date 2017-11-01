@@ -1,0 +1,45 @@
+__NOTOC__
+<div style="width:100%;height:160px;border:0,margin:0;overflow: hidden;">[[File:Cheatsheets-header.jpg|link=]]</div>
+
+{| style="padding: 0;margin:0;margin-top:10px;text-align:left;" |-
+| valign="top" style="border-right: 1px dotted gray;padding-right:25px;" |
+Last revision (mm/dd/yy): '''{{REVISIONMONTH}}/{{REVISIONDAY}}/{{REVISIONYEAR}}'''
+
+__TOC__{{TOC hidden}}
+
+= Introduction  =
+
+Authorizations definition and implementation is one of the important protection measures of an application. They are defined in the creation phase of the project and, even if authorization issues are found when the application is initially released and submitted to a security audit before to go live, the most signicant number of issues related to authorization came in the maintenance lifetime of the application.
+
+This situation is often explained by the fact that features are added/modified and no review of the authorization was performed on the application before the publishing of the new release, for cost or time issue reason.
+
+= Context =
+
+In order to try to address this situation, it's can be interesting to automate the evaluation of the authorization definition and implementation on the application. This, to constantly ensure that implementation of the authorization in the application is consistent with the authorization definition.
+
+An authorization is often composed by 2 elements (also named dimension): The '''Feature''' and the '''Logical Role''' that can access it (sometine a third dimension named '''Data''' is added in order to define a access that include a filtering at business data level).
+
+The representation of the different combinations of these 2 dimensions is often named an '''Authorization matrix''' and is often formalized in an Microsoft Excel file.
+
+During a test of an authorization, a '''Logical Role''' is also called a '''Point Of View'''.
+
+This article will use the assumption that 2 dimensions are used to represent a authorization for the proposition decribed.
+
+= Proposition =
+
+In order to achieve the full automation of the evaluation of the ''authorization matrix'' the folowing action will be performed:
+# Formalize the authorization matrix in a pivot format file allowing:
+## The processing by a program in a easy way.
+## To be read and updated by a human for the follow-up of the authorization combinations.
+## Hierarchy in the information in order to easily materialize the differents combination.
+# Create a set of integration tests that will fully use the authorization matrix pivot file as input source in order to evaluate the differents combinations with:
+## The minimum possible of maintenance when the authorization matrix pivot file is updated.
+## A clear indication, in case of failed test, of the source authorization combination that do not respect the authorization matrix.
+
+== Authorization matrix pivot file ==
+
+TODO
+
+== Integration tests ==
+
+TODO
