@@ -9,15 +9,15 @@ __TOC__{{TOC hidden}}
 
 = Introduction  =
 
-Authorizations definition and implementation is one of the important protection measures of an application. They are defined in the creation phase of the project and, even if authorization issues are found when the application is initially released and submitted to a security audit before to go live, the most signicant number of issues related to authorization came in the maintenance lifetime of the application.
+Authorizations definition and implementation is one of the important protection measure of an application. They are defined in the creation phase of the project and, even if authorization issues are found when the application is initially released and submitted to a security audit before to go live, the most signicant number of issues related to authorization came in the maintenance lifetime of the application.
 
-This situation is often explained by the fact that features are added/modified and no review of the authorization was performed on the application before the publishing of the new release, for cost or time issue reason.
+This situation is often explained by the fact that features are added/modified and no review of the authorizations was performed on the application before the publishing of the new release, for cost or time issue reason.
 
 = Context =
 
-In order to try to address this situation, it's can be interesting to automate the evaluation of the authorization definition and implementation on the application. This, to constantly ensure that implementation of the authorization in the application is consistent with the authorization definition.
+In order to try to address this situation, it's can be interesting to automate the evaluation of the authorizations definition and implementation on the application. This, to constantly ensure that implementation of the authorizations in the application is consistent with the authorizations definition.
 
-An authorization is often composed by 2 elements (also named dimension): The '''Feature''' and the '''Logical Role''' that can access it (sometine a third dimension named '''Data''' is added in order to define a access that include a filtering at business data level).
+An authorization is often composed by 2 elements (also named dimensions): The '''Feature''' and the '''Logical Role''' that can access it (sometime a third dimension named '''Data''' is added in order to define a access that include a filtering at business data level).
 
 The representation of the different combinations of these 2 dimensions is often named an '''Authorization matrix''' and is often formalized in an Microsoft Excel file.
 
@@ -25,32 +25,32 @@ During a test of an authorization, a '''Logical Role''' is also called a '''Poin
 
 = Objective =
 
-This article describe a proposition of implementation in order to automate the tests of an authorization matrix.
+This article describe a proposition of implementation in order to automate the tests of an ''authorization matrix''.
 
-This article will use the assumption that 2 dimensions are used to represent a authorization for the technical proposition decribed and take as example a application exposing REST services.
+This article use the assumption that 2 dimensions are used to represents an authorization for the technical proposition decribed and take as example a application exposing REST services.
 
 The objective is to provide starting ideas/hints in order to create a tailored way of testing of the authorization matrix for the target application.
 
 = Proposition =
 
-In order to achieve the full automation of the evaluation of the ''authorization matrix'' the folowing action will be performed:
+In order to achieve the full automation of the evaluation of the ''authorization matrix'', the folowing actions has been performed:
 
 # Formalize the authorization matrix in a pivot format file allowing:
 ## The processing by a program in a easy way.
 ## To be read and updated by a human for the follow-up of the authorization combinations.
-## Hierarchy in the information in order to easily materialize the differents combination.
+## Hierarchy in the information in order to easily materialize the different combinations.
 ## The maximum possible of independence from the technology and design used to implements the application exposing the features.
-# Create a set of integration tests that will fully use the authorization matrix pivot file as input source in order to evaluate the differents combinations with:
+# Create a set of integration tests that fully use the authorization matrix pivot file as input source in order to evaluate the different combinations with:
 ## The minimum possible of maintenance when the authorization matrix pivot file is updated.
 ## A clear indication, in case of failed test, of the source authorization combination that do not respect the authorization matrix.
 
 == Authorization matrix pivot file ==
 
-The XML format will be used to formalize the authorization matrix.
+The XML format has been used to formalize the authorization matrix.
 
-The XML structure will contains 3 main sections:
+The XML structure contains 3 main sections:
 
-* Node '''roles''': This node describe the possible logical roles used in the system, is used to provide a list  and the explanation of the different roles (authorization level).
+* Node '''roles''': This node describe the possible logical roles used in the system, is used to provide a list and the explanation of the different roles (authorization level).
 * Node '''services''': This node list and describe the available services exposed by the system and the associated logical role(s) that can call them.
 * Node '''services-testing''': This node provide a test payload for each service if the service use input data other than coming from url or path.
 
@@ -123,9 +123,9 @@ This is an example of the XML used to represents the authorization:
 
 == Integration tests ==
 
-Integration tests are implemented using a maximum of factorized code and create one test case by '''Point Of View (POV)''' in order to group the verifications by profile of access level (logical role) and faciliate the rendering/identification of the errors.
+Integration tests are implemented using a maximum of factorized code and one test case by '''Point Of View (POV)''' has been created in order to group the verifications by profile of access level (logical role) and faciliate the rendering/identification of the errors.
 
-Parsing, object mapping and access to the authorization matrix information is implemented using XML marshalling/unmarshalling built-in features provided by the technology used to implements the tests (JAXB here) in order to limit the code to the one in charge of performing the tests.
+Parsing, object mapping and access to the authorization matrix information has been implemented using XML marshalling/unmarshalling built-in features provided by the technology used to implements the tests (JAXB here) in order to limit the code to the one in charge of performing the tests.
 
 This the implementation of the integration tests case class:
 
