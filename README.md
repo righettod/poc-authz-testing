@@ -1,10 +1,6 @@
 # Objective
 
-This project is a prototype in order to explore and describe a proposition for the automation of the testing of the authorization matrix.
-
-The final goal is the creation of a cheat sheet for the **OWASP Cheat Sheet Series** project (*pending*):
-
-https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series
+It's the code repository of the OWASP cheatsheet [Authorization Testing Automation](https://www.owasp.org/index.php/Authorization_Testing_Automation).
 
 # Build status
 
